@@ -1,0 +1,66 @@
+git@github.com:madhukarpendyala/IndianEagle.git
+git@github.com:madhukarpendyala/iEagle.git
+git@github.com:madhukarpendyala/iGaruda.git
+git@github.com:YanaGit/iGaruda.git
+
+ssh-keygen -t rsa -C "madhukar@yanasoftware.in"
+git config --global user.name "Madhukar Pendyala" 
+git config --global user.email madhukar@yanasoftware.in
+
+Build Project:
+==============
+mvn clean install -Penv-dev -DskipTests -DbuildNumber=1
+=======
+To Push
+=======
+git push -u origin Cookies-disabled-issue
+=====
+git status
+git branch
+git add filepaths
+
+git commit -m "Fixed Jira IE-2686 : Added the column definition to store timestamp as data type and CURRENT_STAMP as default value for LAST_UPDATED column"
+git push -u origin 30Sep13-2.9-Release
+
+git pull from to
+==================================================================
+
+D:\>mkdir Git-iGaruda
+
+D:\>cd Git-iGaruda
+
+D:\Git-iGaruda>git clone git@github.com:madhukarpendyala/iGaruda.git
+Cloning into 'iGaruda'...
+remote: Counting objects: 4700, done.
+remote: Compressing objects: 100% (3963/3963), done.
+remote: Total 4700 (delta 511), reused 4672 (delta 498)
+Receiving objects: 100% (4700/4700), 6.08 MiB | 63.00 KiB/s, done.
+Resolving deltas: 100% (511/511), done.
+Checking connectivity... done
+Checking out files: 100% (4007/4007), done.
+
+D:\Git-iGaruda>git branch -v
+fatal: Not a git repository (or any of the parent directories): .git
+
+D:\Git-iGaruda>cd iGaruda
+
+D:\Git-iGaruda\iGaruda>git branch -v
+* master b7f9f8c Merge pull request #2 from gurukaranam/master
+
+D:\Git-iGaruda\iGaruda>git checkout OCT-13
+Branch OCT-13 set up to track remote branch OCT-13 from origin.
+Switched to a new branch 'OCT-13'
+
+D:\Git-iGaruda\iGaruda>git branch -v
+* OCT-13 0969f45 Merge pull request #6 from irfanshaik/OCT-13
+  master b7f9f8c Merge pull request #2 from gurukaranam/master
+
+D:\Git-iGaruda\iGaruda>git remote add yana git@github.com:YanaGit/iGaruda.git
+
+D:\Git-iGaruda\iGaruda>git pull yana OCT-13
+From github.com:YanaGit/iGaruda
+ * branch            OCT-13     -> FETCH_HEAD
+ * [new branch]      OCT-13     -> yana/OCT-13
+Already up-to-date.
+
+D:\Git-iGaruda\iGaruda>
