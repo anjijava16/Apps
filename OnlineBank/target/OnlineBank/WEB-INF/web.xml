@@ -7,7 +7,7 @@
 	
 	
 	 <welcome-file-list>
-    <welcome-file>index.jsp</welcome-file>
+    <welcome-file>/WEB-INF/pages/index.jsp</welcome-file>
   </welcome-file-list>
   
   
@@ -68,7 +68,10 @@
     <servlet-name>VerifyLogin1</servlet-name>
     <url-pattern>/servlet/VerifyLogin1</url-pattern>
   </servlet-mapping>
- 
+  <servlet-mapping>
+    <servlet-name>verifyLogin1</servlet-name>
+    <url-pattern>/servlet/verifyLogin1</url-pattern>
+  </servlet-mapping>
   <servlet-mapping>
     <servlet-name>GetCon</servlet-name>
     <url-pattern>/servlet/GetCon</url-pattern>

@@ -78,7 +78,7 @@ color:#FFFFFF;
 #header
 {
 margin:0 auto;
-background:#000 url(/OnlineBank/images/globe_03.gif) 0 0 no-repeat;
+background:#000 url(images/globe_03.gif) 0 0 no-repeat;
 width:897px;
 height:282px;
 }
@@ -136,7 +136,7 @@ float:left;
 {
 width:897px; 
 margin:0 auto; 
-background:url(/OnlineBank/images/globe_05.jpg) 0 0 repeat-y;
+background:url(images/globe_05.jpg) 0 0 repeat-y;
 }
 #content1 h1
 {
@@ -152,28 +152,28 @@ padding:5px 15px 0 15px;
 }
 .con
 {
-background:url(/OnlineBank/images/globe_06.jpg) 0 0 repeat-y;
+background:url(images/globe_06.jpg) 0 0 repeat-y;
 width:290px;
 }
 #heade1
 {
 width:167px;
 height:79px;
-background:url(/OnlineBank/images/image_03.gif) 20px 10px no-repeat;
+background:url(images/image_03.gif) 20px 10px no-repeat;
 padding-left:90px;
 }
 #heade2
 {
 width:167px;
 height:79px;
-background:url(/OnlineBank/images/image_04.gif) 20px 10px no-repeat;
+background:url(images/image_04.gif) 20px 10px no-repeat;
 padding-left:90px;
 }
 #heade3
 {
 width:167px;
 height:79px;
-background:url(/OnlineBank/images/image_05.gif) 20px 5px no-repeat;
+background:url(images/image_05.gif) 20px 5px no-repeat;
 padding-left:90px;
 }
 #services
@@ -197,7 +197,7 @@ font:normal 12px/22px Arial, Helvetica, sans-serif;
 color:#FFFFFF;
 display:block;
 padding:0 0 4px 16px;
-background:url(/OnlineBank/images/bullet.png) left center no-repeat;
+background:url(images/bullet.png) left center no-repeat;
 }
 #services ul li a
 {
