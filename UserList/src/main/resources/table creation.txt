@@ -1,0 +1,8 @@
+CREATE TABLE blog_user (
+  username varchar(50) NOT NULL,
+  first_name varchar(50) DEFAULT NULL,
+  last_name varchar(50) DEFAULT NULL,
+  password varchar(50) DEFAULT NULL,
+  created_on datetime DEFAULT NULL,
+  PRIMARY KEY (`username`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
