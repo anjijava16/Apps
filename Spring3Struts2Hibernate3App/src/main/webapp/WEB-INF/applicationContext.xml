@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN" "http://www.springframework.org/dtd/spring-beans-2.0.dtd">
+		  <!-- configure sessionFactory -->
+<beans>
+
+	<bean id="sessionFactory" class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
+		<property name="configLocation">
+	    	<value>classpath:hibernate.cfg.xml</value>
+	 	</property>   
+	</bean> 
+
+	<bean id="transactionManager" class="org.springframework.orm.hibernate3.HibernateTransactionManager">
+	    <property name="sessionFactory">
+	        <ref bean="sessionFactory"/>
+	    </property>   
+	</bean>
+
+    <bean id="userDao" class="struts2.spring3.hibernate3.userinfoapp.dao.UserDao" scope="prototype">
+    	<property name="sessionFactory" ref="sessionFactory" />
+    </bean>  
+    <bean id="userService" class="struts2.spring3.hibernate3.userinfoapp.service.UserService" scope="prototype">
+    	<property name="userDao" ref="userDao" />
+    </bean> 
+
+    <bean id="noteDao" class="struts2.spring3.hibernate3.userinfoapp.dao.NoteDao" scope="prototype">
+    	<property name="sessionFactory" ref="sessionFactory" />
+    </bean>  
+    <bean id="noteService" class="struts2.spring3.hibernate3.userinfoapp.service.NoteService" scope="prototype">
+    	<property name="noteDao" ref="noteDao" />
+    </bean> 
+    <bean id="addNoteClass" class="struts2.spring3.hibernate3.userinfoapp.action.AddNoteAction" scope="prototype">
+    	<property name="noteService" ref="noteService" />
+    </bean>   
+    <bean id="listNoteClass" class="struts2.spring3.hibernate3.userinfoapp.action.ListNoteAction" scope="prototype">
+    	<property name="noteService" ref="noteService" />
+    </bean>  
+    <bean id="updateNoteClass" class="struts2.spring3.hibernate3.userinfoapp.action.UpdateNoteAction" scope="prototype">
+    	<property name="noteService" ref="noteService" />
+    </bean>
+    <bean id="deleteNoteClass" class="struts2.spring3.hibernate3.userinfoapp.action.DeleteNoteAction" scope="prototype">
+    	<property name="noteService" ref="noteService" />
+    </bean>
+                     
+    <bean id="loginActionClass" class="struts2.spring3.hibernate3.userinfoapp.action.LoginAction" scope="prototype">
+    <!-- must use singleton="false" here! otherwise addFieldError will not go through after the first time failed validation. Because Spring uses singleton by default, the addFieldError will be kept for subsequent submition -->
+    	<property name="userService" ref="userService" />
+    </bean> 
+
+    <bean id="logoutActionClass" class="struts2.spring3.hibernate3.userinfoapp.action.LogoutAction" scope="prototype">
+    </bean> 
+        
+    <bean id="registerActionClass" class="struts2.spring3.hibernate3.userinfoapp.action.RegisterAction" scope="prototype">
+    <!-- must use singleton="false" here! otherwise addFieldError will not go through after the first time failed validation. Because Spring uses singleton by default, the addFieldError will be kept for subsequent submition -->
+    	<property name="userService" ref="userService" />
+    </bean> 
+             
+    <bean id="userActionClass" class="struts2.spring3.hibernate3.userinfoapp.action.UserAction" scope="prototype">
+    <!-- must use singleton="false" here! otherwise addFieldError will not go through after the first time failed validation. Because Spring uses singleton by default, the addFieldError will be kept for subsequent submition -->
+    	<property name="userService" ref="userService" />
+    </bean>
+
+
+	<bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">  
+         <property name="host" value="smtp.gmail.com" />  
+         <property name="port" value="465" />  
+         <property name="protocol" value="smtps" />
+         
+         <property name="username" value="hillsreddy" />  
+         <property name="password" value="P1@ndone" />  
+         <property name="javaMailProperties">  
+             <props>  
+                 <prop key="mail.smtps.auth">true</prop>
+				 <prop key="mail.smtps.starttls.enable">true</prop>
+				 <prop key="mail.smtps.debug">true</prop>
+                 
+             </props>  
+         </property>
+     </bean> 
+
+    <bean id="recoverPasswordActionClass" class="struts2.spring3.hibernate3.userinfoapp.action.RecoverPasswordAction" scope="prototype">
+    	<property name="mailSender" ref="mailSender" />
+		<property name="userService" ref="userService" />
+    </bean>
+
+    <bean id="loginAjaxActionClass" class="struts2.spring3.hibernate3.userinfoapp.action.LoginAjaxAction" scope="prototype">
+    	<property name="userService" ref="userService" />
+    </bean>   
+
+</beans>
+
+
