@@ -1,0 +1,74 @@
+<!DOCTYPE struts PUBLIC
+"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+"http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+    <!-- <package name="default" extends="struts-default"> -->
+    <package name="default" extends="json-default">
+    
+		<action name="loginUser" class="loginActionClass"  method="loginUser">
+			<result name = "success" type="redirect">/listNote.action</result>
+			<result name = "input">/index.jsp</result>
+			<result name = "error">/error.jsp</result>
+		</action>		
+		
+		<action name="registerUser" class="registerActionClass"  method="registerUser">
+			<!-- <result type="chain">listUser</result> -->
+			<result name = "login">/success_register.jsp</result>
+		</action>
+		
+		<action name="listUser" class="userActionClass"  method="listUser">
+			<result>/listUser.jsp</result>
+			<result name = "input">/index.jsp</result>
+		</action>
+		
+		<action name="recoverPassword" class="recoverPasswordActionClass"  method="recoverPassword">
+			<result name = "input">/recover_password.jsp</result>
+			<result name = "error">/error.jsp</result>
+			<result name = "success">/recover_password_success.jsp</result>
+		</action>
+		
+		<action name="selectAction" class="com.wordpress.bioincloud.SelectAction" method="display">
+			<result name="none">/select.jsp</result>
+		</action>
+		
+		<action name="resultAction" class="com.wordpress.bioincloud.SelectAction">
+			<result name="success">/result.jsp</result>
+		</action>
+
+        <action name="ajaxExample" class="com.wordpress.bioincloud.AjaxExampleAction">
+            <result type="json" />
+        </action>            
+
+		<action name="loginAjaxUser" class="loginAjaxActionClass"  method="loginAjaxUser">
+			<result type="json" />
+		</action>
+		
+		<action name="updateUser" class="updateActionClass"  method="updateUser">
+			<result type="json" />
+		</action>										
+
+		<action name="addNote" class="addNoteClass"  method="addNote">
+			<result name = "list" type="redirect">/listNote.action</result>
+			<result name = "input">/index.jsp</result>
+			<result name = "error">/error.jsp</result>
+		</action>	
+
+		<action name="listNote" class="listNoteClass"  method="listNote">
+			<result name = "list" >/listNote.jsp</result>
+			<result name = "input">/index.jsp</result>
+		</action>	
+
+		<action name="updateNote" class="updateNoteClass"  method="updateNote">
+			<result type="json" />
+		</action>
+		
+		<action name="deleteNote" class="deleteNoteClass"  method="deleteNote">
+			<result type="json" />
+		</action>
+		
+		<action name="logoutUser" class="logoutActionClass"  method="logoutUser">
+			<result name = "input">/index.jsp</result>
+		</action>			
+	</package>
+</struts>

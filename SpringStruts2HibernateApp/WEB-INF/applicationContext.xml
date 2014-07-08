@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN" "http://www.springframework.org/dtd/spring-beans-2.0.dtd">
+		  <!-- configure sessionFactory -->
+<beans>
+
+	<bean id="sessionFactory" class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
+		<property name="configLocation">
+	    	<value>classpath:hibernate.cfg.xml</value>
+	 	</property>   
+	</bean> 
+
+	<bean id="transactionManager" class="org.springframework.orm.hibernate3.HibernateTransactionManager">
+	    <property name="sessionFactory">
+	        <ref bean="sessionFactory"/>
+	    </property>   
+	</bean>
+
+    <bean id="userDao" class="com.wordpress.bioincloud.UserDao" scope="prototype">
+    	<property name="sessionFactory" ref="sessionFactory" />
+    </bean>  
+    <bean id="userService" class="com.wordpress.bioincloud.UserService" scope="prototype">
+    	<property name="userDao" ref="userDao" />
+    </bean> 
+
+    <bean id="noteDao" class="com.wordpress.bioincloud.NoteDao" scope="prototype">
+    	<property name="sessionFactory" ref="sessionFactory" />
+    </bean>  
+    <bean id="noteService" class="com.wordpress.bioincloud.NoteService" scope="prototype">
+    	<property name="noteDao" ref="noteDao" />
+    </bean> 
+    <bean id="addNoteClass" class="com.wordpress.bioincloud.AddNoteAction" scope="prototype">
+    	<property name="noteService" ref="noteService" />
+    </bean>   
+    <bean id="listNoteClass" class="com.wordpress.bioincloud.ListNoteAction" scope="prototype">
+    	<property name="noteService" ref="noteService" />
+    </bean>  
+    <bean id="updateNoteClass" class="com.wordpress.bioincloud.UpdateNoteAction" scope="prototype">
+    	<property name="noteService" ref="noteService" />
+    </bean>
+    <bean id="deleteNoteClass" class="com.wordpress.bioincloud.DeleteNoteAction" scope="prototype">
+    	<property name="noteService" ref="noteService" />
+    </bean>
+                     
+    <bean id="loginActionClass" class="com.wordpress.bioincloud.LoginAction" scope="prototype">
+    <!-- must use singleton="false" here! otherwise addFieldError will not go through after the first time failed validation. Because Spring uses singleton by default, the addFieldError will be kept for subsequent submition -->
+    	<property name="userService" ref="userService" />
+    </bean> 
+
+    <bean id="logoutActionClass" class="com.wordpress.bioincloud.LogoutAction" scope="prototype">
+    </bean> 
+        
+    <bean id="registerActionClass" class="com.wordpress.bioincloud.RegisterAction" scope="prototype">
+    <!-- must use singleton="false" here! otherwise addFieldError will not go through after the first time failed validation. Because Spring uses singleton by default, the addFieldError will be kept for subsequent submition -->
+    	<property name="userService" ref="userService" />
+    </bean> 
+             
+    <bean id="userActionClass" class="com.wordpress.bioincloud.UserAction" scope="prototype">
+    <!-- must use singleton="false" here! otherwise addFieldError will not go through after the first time failed validation. Because Spring uses singleton by default, the addFieldError will be kept for subsequent submition -->
+    	<property name="userService" ref="userService" />
+    </bean>
+
+
+	<bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">  
+         <property name="host" value="smtp.gmail.com" />  
+         <property name="port" value="465" />  
+         <property name="protocol" value="smtps" />
+         
+         <property name="username" value="email" />  
+         <property name="password" value="password" />  
+         <property name="javaMailProperties">  
+             <props>  
+                 <prop key="mail.smtps.auth">true</prop>
+				 <prop key="mail.smtps.starttls.enable">true</prop>
+				 <prop key="mail.smtps.debug">true</prop>
+                 
+             </props>  
+         </property>
+     </bean> 
+
+    <bean id="recoverPasswordActionClass" class="com.wordpress.bioincloud.RecoverPasswordAction" scope="prototype">
+    	<property name="mailSender" ref="mailSender" />
+		<property name="userService" ref="userService" />
+    </bean>
+
+    <bean id="loginAjaxActionClass" class="com.wordpress.bioincloud.LoginAjaxAction" scope="prototype">
+    	<property name="userService" ref="userService" />
+    </bean>   
+
+</beans>
+
+
