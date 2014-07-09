@@ -1,15 +1,20 @@
 package struts2.spring3.hibernate3.userinfoapp.action;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 
 import org.apache.struts2.interceptor.SessionAware;
 
 import struts2.spring3.hibernate3.userinfoapp.service.INoteService;
+import struts2.spring3.hibernate3.userinfoapp.comparable.NoteByContentComparable;
+import struts2.spring3.hibernate3.userinfoapp.comparator.NoteByTitleComparator;
+import struts2.spring3.hibernate3.userinfoapp.comparator.NoteByUserNameComparator;
 import struts2.spring3.hibernate3.userinfoapp.dto.Note;
 
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
+
 public class ListNoteAction extends ActionSupport{
 	private String userId;
 	private String title;
@@ -26,6 +31,10 @@ public class ListNoteAction extends ActionSupport{
 		}
 		else{
 			noteList = noteService.listNote(pageNum,notesPerPage);
+			/*List<NoteByContentComparable> notesList = new ArrayList<NoteByContentComparable>();
+			notesList.addAll(notesList);
+			Collections.sort(notesList);*/
+			Collections.sort(noteList,new NoteByUserNameComparator());
 			return "list";
 		}
 	}
