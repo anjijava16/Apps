@@ -1,0 +1,33 @@
+<web-app xmlns="http://java.sun.com/xml/ns/javaee" version="2.5">
+  <display-name>Archetype Created Web Application</display-name>
+  <welcome-file-list>
+  	<welcome-file>index.jsp</welcome-file>
+  </welcome-file-list>
+  <servlet>
+  	<servlet-name>searchcontroller</servlet-name>
+  	<servlet-class>com.itravel.controller.SearchController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>searchcontroller</servlet-name>
+  	<url-pattern>/searchcontroller</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+  	<servlet-name>loginController</servlet-name>
+  	<servlet-class>com.itravel.controller.LoginController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>loginController</servlet-name>
+  	<url-pattern>/loginController</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+  	<servlet-name>bookingController</servlet-name>
+  	<servlet-class>com.itravel.controller.BookingController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>bookingController</servlet-name>
+  	<url-pattern>/bookingController</url-pattern>
+  </servlet-mapping>
+ 
+</web-app>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+ "-//Hibernate/Hibernate Mapping DTD//EN"
+ "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd"> 
+
+<hibernate-mapping>
+   <class name="com.itravel.dto.Search" table="EMPLOYEE">
+      <meta attribute="class-description">
+         This class contains the search detail. 
+      </meta>
+      <id name="id" type="java.lang.Integer" column="id">
+         <generator class="native"/>
+      </id>
+      <property name="search_date" column="search_date"/>
+      <property name="travel_date" column="travel_date"/>
+      <property name="return_date" column="return_date"/>
+      <property name="origin" column="origin"/>
+      <property name="destination" column="destination"/>
+   </class>
+</hibernate-mapping>
