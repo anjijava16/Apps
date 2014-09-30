@@ -5,16 +5,6 @@ import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Shell;
 
-/**
- * ZetCode Java SWT tutorial
- *
- * In this program, we position two
- * buttons using absolute coordinates
- *
- * @author jan bodnar
- * website zetcode.com
- * last modified June 2009
- */
 
 public class SwtButton {
 
