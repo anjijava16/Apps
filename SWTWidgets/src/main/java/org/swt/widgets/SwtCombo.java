@@ -3,15 +3,19 @@ package org.swt.widgets;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
+import org.eclipse.swt.graphics.DeviceData;
 import org.eclipse.swt.widgets.Combo;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Shell;
+import org.swt.examples.Sleak;
+import org.swt.layouts.SwtRowLayout;
 
 
 public class SwtCombo {
 
-    Shell shell;
+    Shell shell = null;
+    static Display display;
 
     public SwtCombo(Display display) {
 
@@ -66,7 +70,13 @@ public class SwtCombo {
 
 
     public static void main(String[] args) {
-        Display display = new Display();
+    	/*DeviceData data = new DeviceData();
+        data.tracking = true;
+        display = new Display(data);
+        //display = new Display();
+         Sleak sleak = new Sleak();
+       sleak.open();*/
+    	Display display = new Display();
         new SwtCombo(display);
         display.dispose();
     }
