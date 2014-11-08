@@ -11,7 +11,7 @@
 		<c:if test="${status == 'exist'}">
 			<p class="error">User Already Exist</p>
 		</c:if>
-		<form:form modelAttribute="user" action="/Spring3Hibernate4Annotation/create" method="post">
+		<form:form modelAttribute="user" action="/UserList/create" method="post">
 			<form:label path="userName">User Name</form:label><form:input path="userName" />
 			<form:label path="firstName">First Name</form:label><form:input path="firstName" />
 			<form:label path="lastName">Last Name</form:label><form:input path="lastName" />
@@ -38,8 +38,8 @@
 		<td>${current.userName}</td>
 		<td>${current.firstName}</td>
 		<td>${current.lastName}</td>
-		<td><a href="/Spring3Hibernate4Annotation/edit/${current.userName}">Edit</a></td>
-		<td><a href="/Spring3Hibernate4Annotation/delete/${current.userName}">Delete</a></td>
+		<td><a href="/UserList/edit/${current.userName}">Edit</a></td>
+		<td><a href="/UserList/delete/${current.userName}">Delete</a></td>
 		</tr>
 	</c:forEach>
 	</table>
@@ -49,12 +49,12 @@
 
 	$(function() {
 		$("#save").click(function(event) {
-        	$("#user").attr("action", "/Spring3Hibernate4Annotation/create")
+        	$("#user").attr("action", "/UserList/create")
 			$("#user").submit();
 		});
 
 		$("#search").click(function(event) {
-        	$("#user").attr("action", "/Spring3Hibernate4Annotation/search")
+        	$("#user").attr("action", "/UserList/search")
 			$("#user").submit();
 
 		});
