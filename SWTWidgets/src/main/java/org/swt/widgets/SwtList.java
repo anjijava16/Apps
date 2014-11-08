@@ -11,75 +11,69 @@ import org.eclipse.swt.widgets.List;
 import org.eclipse.swt.widgets.Listener;
 import org.eclipse.swt.widgets.Shell;
 
-
-
 public class SwtList {
 
-    Shell shell;
+	Shell shell;
 
-    public SwtList(Display display) {
+	public SwtList(Display display) {
 
-        shell = new Shell(display);
+		shell = new Shell(display);
 
-        shell.setText("List");
+		shell.setText("List");
 
-        initUI();
+		initUI();
 
-        shell.setSize(300, 250);
-        shell.setLocation(300, 300);
+		shell.setSize(300, 250);
+		shell.setLocation(300, 300);
 
-        shell.open();
+		shell.open();
 
-        while (!shell.isDisposed()) {
-          if (!display.readAndDispatch()) {
-            display.sleep();
-          }
-        }
-    }
+		while (!shell.isDisposed()) {
+			if (!display.readAndDispatch()) {
+				display.sleep();
+			}
+		}
+	}
 
+	public void initUI() {
 
-    public void initUI() {
+		final Label status = new Label(shell, SWT.BORDER);
+		status.setText("Ready");
 
+		FormLayout layout = new FormLayout();
+		shell.setLayout(layout);
 
-        final Label status = new Label(shell, SWT.BORDER);
-        status.setText("Ready");
-        
-        FormLayout layout = new FormLayout();
-        shell.setLayout(layout);
+		FormData labelData = new FormData();
+		labelData.left = new FormAttachment(0);
+		labelData.right = new FormAttachment(100);
+		labelData.bottom = new FormAttachment(100);
+		status.setLayoutData(labelData);
 
-        FormData labelData = new FormData();
-        labelData.left = new FormAttachment(0);
-        labelData.right = new FormAttachment(100);
-        labelData.bottom = new FormAttachment(100);
-        status.setLayoutData(labelData);
+		final List list = new List(shell, SWT.BORDER);
 
-        final List list = new List(shell, SWT.BORDER);
-        
-        list.add("Aliens");
-        list.add("Capote");
-        list.add("Neverending story");
-        list.add("Starship troopers");
-        list.add("Exorcist");
-        list.add("Omen");
+		list.add("Aliens");
+		list.add("Capote");
+		list.add("Neverending story");
+		list.add("Starship troopers");
+		list.add("Exorcist");
+		list.add("Omen");
 
-        list.addListener(SWT.Selection, new Listener () {
-            public void handleEvent (Event e) {
-                String[] items = list.getSelection();
-                status.setText(items[0]);
-            }
-        });
+		list.addListener(SWT.Selection, new Listener() {
+			public void handleEvent(Event e) {
+				String[] items = list.getSelection();
+				status.setText(items[0]);
+			}
+		});
 
+		FormData listData = new FormData();
+		listData.left = new FormAttachment(shell, 30, SWT.LEFT);
+		listData.top = new FormAttachment(shell, 30, SWT.TOP);
+		list.setLayoutData(listData);
+	}
 
-        FormData listData = new FormData();
-        listData.left = new FormAttachment(shell, 30, SWT.LEFT);
-        listData.top = new FormAttachment(shell, 30, SWT.TOP);
-        list.setLayoutData(listData);
-    }
-
-
-    public static void main(String[] args) {
-        Display display = new Display();
-        new SwtList(display);
-        display.dispose();
-    }
+	public static void main(String[] args) {
+		Display display = new Display();
+		new SwtList(display);
+		display.dispose();
+	}
 }
