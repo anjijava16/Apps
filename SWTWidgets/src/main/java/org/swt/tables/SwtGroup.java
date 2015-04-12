@@ -4,9 +4,7 @@ import org.eclipse.swt.SWT;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Display;
-import org.eclipse.swt.widgets.Event;
 import org.eclipse.swt.widgets.Group;
-import org.eclipse.swt.widgets.Listener;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Table;
 import org.eclipse.swt.widgets.TableColumn;
@@ -42,7 +40,7 @@ public class SwtGroup {
 		GridData gridData = new GridData(SWT.LEFT, SWT.TOP, true, true);
 
 		final Text text = new Text(shell, SWT.BORDER);
-		text.setBounds(25, 240, 220, 25);
+		//text.setBounds(25, 240, 220, 25);
 
 		Table table = new Table(group1, SWT.CHECK | SWT.BORDER | SWT.V_SCROLL
 				| SWT.H_SCROLL);
@@ -69,7 +67,7 @@ public class SwtGroup {
 
 		table.setBounds(25, 70, 220, 200);
 
-		table.addListener(SWT.Selection, new Listener() {
+		/*table.addListener(SWT.Selection, new Listener() {
 			public void handleEvent(Event event) {
 				if (event.detail == SWT.CHECK) {
 					text.setText("You checked " + event.item);
@@ -77,7 +75,7 @@ public class SwtGroup {
 					text.setText("You selected " + event.item);
 				}
 			}
-		});
+		});*/
 
 		// Group2 and table 2
 
@@ -92,7 +90,7 @@ public class SwtGroup {
 		GridData gridData2 = new GridData(SWT.RIGHT, SWT.TOP, true, true);
 
 		final Text text2 = new Text(shell, SWT.BORDER);
-		text2.setBounds(250, 240, 220, 25);
+		//text2.setBounds(250, 240, 220, 25);
 
 		Table table2 = new Table(group2, SWT.CHECK | SWT.BORDER | SWT.V_SCROLL
 				| SWT.H_SCROLL);
@@ -120,7 +118,7 @@ public class SwtGroup {
 
 		table2.setBounds(25, 70, 220, 200);
 
-		table2.addListener(SWT.Selection, new Listener() {
+		/*table2.addListener(SWT.Selection, new Listener() {
 			public void handleEvent(Event event) {
 				if (event.detail == SWT.CHECK) {
 					text.setText("You checked " + event.item);
@@ -128,7 +126,7 @@ public class SwtGroup {
 					text.setText("You selected " + event.item);
 				}
 			}
-		});
+		});*/
 
 		shell.pack();
 		shell.open();
