@@ -1,0 +1,8 @@
+import com.practice.drools.Message;
+
+rule "Hello World1"
+when
+  message:Message (type == 'Hello..1')
+then
+  message.printMessage();
+end
