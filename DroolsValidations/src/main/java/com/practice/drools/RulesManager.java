@@ -59,7 +59,7 @@ public class RulesManager {
 			entitymanager.close();
 			emfactory.close();
 
-			System.out.println(item1.getState() + " " + item1.getDate());
+			System.out.println("\n Rules Executed Successfully....");
 
 		} catch (Throwable t) {
 			t.printStackTrace();

@@ -2,11 +2,12 @@ import com.practice.drools.Freedom;
 import com.practice.drools.jpa.entity.ValidationControl;
 import com.practice.drools.jpa.entity.ValidationErrors;
 
+import function com.practice.drools.util.DroolsUtil.helper;
+
 rule "001"
 	when
 	exists ValidationControl(validationNo == 1)
 	Freedom($state : state in ("", " ", null))
-	//eval($state.isEmpty())
 then
     ValidationErrors error = new ValidationErrors();
     error.setErrorSeqNbr(1);
@@ -14,6 +15,7 @@ then
     error.setCreatedBy("Reddy");
     error.setCreatedDate(16082015);
     error.setCreatedTime(1646);
-    System.out.println(error.getErrorMsg());
+    System.out.println("Rule 001: "+error.getErrorMsg());
+    helper(drools);
 end
 
