@@ -28,24 +28,12 @@ public class DroolsTest {
 			pk.setCountry("US");
 			Freedom item1 = entitymanager.find(Freedom.class, pk);
 
-			System.out.println("FreedomPK = " + item1.getState());
-
-			// Employee emp = entitymanager.find( Employee.class, 1201 );
 			// load up the knowledge base
 			KnowledgeBase kbase = readKnowledgeBase();
 			StatefulKnowledgeSession ksession = kbase
 					.newStatefulKnowledgeSession();
 
-			// Freedom item1 = new Freedom();
-			// item1.setState(item1.getState());
-			// item1.setDate(item1.getDate());
 			ksession.insert(item1);
-
-			// emp.setEid(1);
-			// emp.setEname(emp.getEname());
-			// emp.setSalary(emp.getSalary());
-			// emp.setDeg(emp.getDeg());
-			// ksession.insert(emp);
 
 			ksession.fireAllRules();
 
@@ -63,8 +51,7 @@ public class DroolsTest {
 
 		kbuilder.add(ResourceFactory.newClassPathResource("helloWorld1.drl"),
 				ResourceType.DRL);
-		// kbuilder.add(ResourceFactory.newClassPathResource("Nagpur.drl"),
-		// ResourceType.DRL);
+		// kbuilder.add(ResourceFactory.newClassPathResource("Nagpur.drl"), ResourceType.DRL);
 
 		KnowledgeBuilderErrors errors = kbuilder.getErrors();
 
