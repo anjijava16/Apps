@@ -1,0 +1,10 @@
+import com.practice.drools.Freedom;
+
+rule "Hello World1..."
+when
+	Freedom($state : state)
+  eval(true)
+then
+   System.out.println("State="+$state);
+end
+
