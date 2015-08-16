@@ -71,11 +71,11 @@ public class RulesManager {
 		KnowledgeBuilder kbuilder = KnowledgeBuilderFactory
 				.newKnowledgeBuilder();
 
-		kbuilder.add(
-				ResourceFactory.newClassPathResource("validations-001-099.drl"),
+		kbuilder.add(ResourceFactory
+				.newClassPathResource("rules/validations-001-099.drl"),
 				ResourceType.DRL);
-		kbuilder.add(
-				ResourceFactory.newClassPathResource("validations-100-199.drl"),
+		kbuilder.add(ResourceFactory
+				.newClassPathResource("rules/validations-100-199.drl"),
 				ResourceType.DRL);
 
 		KnowledgeBuilderErrors errors = kbuilder.getErrors();
