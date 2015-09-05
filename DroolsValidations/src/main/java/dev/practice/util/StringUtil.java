@@ -1,4 +1,4 @@
-package com.practice.drools.util;
+package dev.practice.util;
 
 import java.math.BigDecimal;
 import java.text.DecimalFormat;
@@ -9,13 +9,14 @@ import java.util.Map;
 import java.util.StringTokenizer;
 import java.util.regex.Pattern;
 
+import dev.practice.db.DatabaseUtil;
+
 //import org.apache.commons.lang.WordUtils;
 
 /**
  * String Utils.
  * 
  * @author: KondalReddy
- * @created: 01/02/2012
  */
 public final class StringUtil {
 
@@ -446,10 +447,10 @@ public final class StringUtil {
    * @return The truncated value. If the original value size is less then or
    *         equal to the size of the field, it is returned as is.
    */
-/*  @SuppressWarnings("rawtypes")
+  @SuppressWarnings("rawtypes")
   public static String truncateToFieldSize(String value, Class type, String fieldName) {
     return substring(value, 0, DatabaseUtil.getColumnLength(type, fieldName));
-  }*/
+  }
 
   /**
    * Returns the String representation of the specified value. If the value is
@@ -1141,7 +1142,7 @@ public final class StringUtil {
 
     return false;
   }
-  
+
   public static boolean areEqualsIgnoreCase(String str1, String str2) {
     if (isEmpty(str1) && isEmpty(str2))
       return true;
@@ -1212,7 +1213,7 @@ public final class StringUtil {
 
     return Pattern.matches("[0-9]+", value);
   }
-  
+
   public static boolean isBigDecimal(String value) {
     if (value == null)
       return false;
@@ -1553,8 +1554,8 @@ public final class StringUtil {
     // Loop to find the largest numeric value in the street address.
     for (int i = 0; i < tokens.length; i++) {
       if (!StringUtil.isEmpty(tokens[i])) {
-       // int intValue = NumberUtil.parseInt(tokens[i]);
-       // compare = intValue > compare ? intValue : compare;
+        // int intValue = NumberUtil.parseInt(tokens[i]);
+        // compare = intValue > compare ? intValue : compare;
       }
     }
 
@@ -1784,22 +1785,23 @@ public final class StringUtil {
       return str;
     return str.replaceAll(original, replacement);
   }
-  
-  public static String formatDecimal (String format, BigDecimal value){
+
+  public static String formatDecimal(String format, BigDecimal value) {
     if (value == null)
       return "";
-    
+
     DecimalFormat formatter = null;
     String valueStr = null;
-    try{
+    try {
       formatter = new DecimalFormat(format);
       valueStr = formatter.format(value);
-    }catch (Exception e) {
+    }
+    catch (Exception e) {
       valueStr = value.toString();
     }
-    return valueStr == null ? "" :valueStr;
+    return valueStr == null ? "" : valueStr;
   }
-  
+
   public static String convertBytesToString(byte[] byteArray) {
     String text;
     if (byteArray != null) {
@@ -1825,40 +1827,126 @@ public final class StringUtil {
       output.append(deAccent(input.charAt(i)));
     return output.toString();
   }
-  
+
   private static char deAccent(char c) {
     if (c >= 32 && c <= 127)
       return c;
-    
+
     switch (c) {
-      case 'à': case 'á': case 'â': case 'ã': case 'ä': case 'å': case 'æ': c = 'a'; break;
-      case 'À': case 'Á': case 'Â': case 'Ä': case 'Å': case 'Æ': c = 'A'; break;
-      case 'è': case 'é': case 'ê': case 'ë': c = 'e'; break;
-      case 'È': case 'É': case 'Ê': case 'Ë': c = 'E'; break;
-      case 'ì': case 'í': case 'î': case 'ï': c = 'i'; break;
-      case 'Ì': case 'Í': case 'Î': case 'Ï': c = 'I'; break;
-      case 'ò': case 'ó': case 'ô': case 'õ': case 'ö': case 'œ': c = 'o'; break;
-      case 'Ò': case 'Ó': case 'Ô': case 'Õ': case 'Ö': case 'Œ': c = 'O'; break;
-      case 'ù': case 'ú': case 'û': case 'ü': c = 'u'; break;
-      case 'Ù': case 'Ú': case 'Û': case 'Ü': c = 'U'; break;
-      case 'ý': case 'ÿ': c = 'y'; break;
-      case 'Ý': case 'Ÿ': c = 'Y'; break;
-      case 'ñ': c = 'n'; break;
-      case 'Ñ': c = 'N'; break;
-      case 'ß': c = 's'; break;
-      case 'ð': c = 'd'; break;
-      case 'Ð': c = 'D'; break;
-      case 'ø': c = 'o'; break;
-      case 'Ø': c = 'o'; break;
-      case 'ç': c = 'c'; break;
-      case 'Ç': c = 'C'; break;
-      case '¿': case '¡': c = ' '; break;
+      case 'à':
+      case 'á':
+      case 'â':
+      case 'ã':
+      case 'ä':
+      case 'å':
+      case 'æ':
+        c = 'a';
+        break;
+      case 'À':
+      case 'Á':
+      case 'Â':
+      case 'Ä':
+      case 'Å':
+      case 'Æ':
+        c = 'A';
+        break;
+      case 'è':
+      case 'é':
+      case 'ê':
+      case 'ë':
+        c = 'e';
+        break;
+      case 'È':
+      case 'É':
+      case 'Ê':
+      case 'Ë':
+        c = 'E';
+        break;
+      case 'ì':
+      case 'í':
+      case 'î':
+      case 'ï':
+        c = 'i';
+        break;
+      case 'Ì':
+      case 'Í':
+      case 'Î':
+      case 'Ï':
+        c = 'I';
+        break;
+      case 'ò':
+      case 'ó':
+      case 'ô':
+      case 'õ':
+      case 'ö':
+      case 'œ':
+        c = 'o';
+        break;
+      case 'Ò':
+      case 'Ó':
+      case 'Ô':
+      case 'Õ':
+      case 'Ö':
+      case 'Œ':
+        c = 'O';
+        break;
+      case 'ù':
+      case 'ú':
+      case 'û':
+      case 'ü':
+        c = 'u';
+        break;
+      case 'Ù':
+      case 'Ú':
+      case 'Û':
+      case 'Ü':
+        c = 'U';
+        break;
+      case 'ý':
+      case 'ÿ':
+        c = 'y';
+        break;
+      case 'Ý':
+      case 'Ÿ':
+        c = 'Y';
+        break;
+      case 'ñ':
+        c = 'n';
+        break;
+      case 'Ñ':
+        c = 'N';
+        break;
+      case 'ß':
+        c = 's';
+        break;
+      case 'ð':
+        c = 'd';
+        break;
+      case 'Ð':
+        c = 'D';
+        break;
+      case 'ø':
+        c = 'o';
+        break;
+      case 'Ø':
+        c = 'o';
+        break;
+      case 'ç':
+        c = 'c';
+        break;
+      case 'Ç':
+        c = 'C';
+        break;
+      case '¿':
+      case '¡':
+        c = ' ';
+        break;
       default:
         c = ' ';
     }
     return c;
   }
-  
+
   public static int indexOfFirstNonWhitespace(String str) { // KC-6140
     int pos = -1;
     if (str != null) {
@@ -1873,6 +1961,7 @@ public final class StringUtil {
     }
     return pos;
   }
+
   // </blah>
   // 56789012
   //
@@ -1896,52 +1985,52 @@ public final class StringUtil {
     }
     return list;
   }
-  
+
   public static boolean wildCardMatch(String text, String pattern, char wildCardChar, boolean ignoreCase) {
 
     if (ignoreCase) {
-        text = text.toUpperCase();
-        pattern = pattern.toUpperCase();
-      }
-      
-      String [] cards = pattern.split("\\" + wildCardChar);
-
-      for (String card : cards) {
-          int idx = text.indexOf(card);
-          
-          if(idx == -1)
-           return false;
-          
-          text = text.substring(idx + card.length());
-      }
-      return true;
+      text = text.toUpperCase();
+      pattern = pattern.toUpperCase();
     }
-  
+
+    String[] cards = pattern.split("\\" + wildCardChar);
+
+    for (String card : cards) {
+      int idx = text.indexOf(card);
+
+      if (idx == -1)
+        return false;
+
+      text = text.substring(idx + card.length());
+    }
+    return true;
+  }
+
   public static String removeNonNumericChars(String text) {
     String str = text;
     if (text != null)
       str = text.replaceAll("[^\\d]", "");
     return str;
   }
- 
+
   public static String truncate(String str, int maxSize) {
-    str = str.substring(0, Math.min(str.length(), maxSize));    
+    str = str.substring(0, Math.min(str.length(), maxSize));
     return str;
   }
-  
+
   public static String[] splitOnSpace(String str) {
     if (str == null)
-      return new String[] {};
+      return new String[]{};
     return str.split("[ \t]+");
   }
+
   public static boolean booleanFromString(String str) {
     boolean response = false;
-    if (! StringUtil.isEmpty(str) && str.equals("Y")) {
+    if (!StringUtil.isEmpty(str) && str.equals("Y")) {
       response = true;
     }
     return response;
   }
-  
 
   /**
    * This will return single space for null or empty string
@@ -1957,5 +2046,5 @@ public final class StringUtil {
       return str;
     }
   }
-  
+
 }

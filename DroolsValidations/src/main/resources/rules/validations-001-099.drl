@@ -1,8 +1,8 @@
-import com.practice.drools.Freedom;
-import com.practice.drools.jpa.entity.ValidationControl;
-import com.practice.drools.jpa.entity.ValidationErrors;
+import dev.practice.drools.Freedom;
+import dev.practice.drools.jpa.entity.ValidationControl;
+import dev.practice.drools.jpa.entity.ValidationErrors;
 
-import function com.practice.drools.util.DroolsUtil.helper;
+import function dev.practice.util.DroolsUtil.helper;
 
 rule "001"
 	when

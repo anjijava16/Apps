@@ -6,20 +6,24 @@
    http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd">
 
 	<persistence-unit name="validations" transaction-type="RESOURCE_LOCAL">
-	
-		<class>com.practice.drools.Freedom</class>
-		<class>com.practice.drools.FreedomPK</class>
-		<class>com.practice.drools.jpa.entity.ValidationControl</class>
-		<class>com.practice.drools.jpa.entity.ValidationMess</class>
-		<class>com.practice.drools.jpa.entity.ValidationErrors</class>
-		
+
+		<class>dev.practice.drools.Freedom</class>
+		<class>dev.practice.drools.FreedomPK</class>
+		<class>dev.practice.drools.jpa.entity.ValidationControl</class>
+		<class>dev.practice.drools.jpa.entity.ValidationMess</class>
+		<class>dev.practice.drools.jpa.entity.ValidationErrors</class>
+
 		<properties>
-			<property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/devdb" />
-			<property name="javax.persistence.jdbc.user" value="root" />
-			<property name="javax.persistence.jdbc.password" value="root" />
-			<property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver" />
-			<property name="eclipselink.logging.level" value="FINE" />
-			<property name="eclipselink.ddl-generation" value="create-tables" />
+			<property name="toplink.cache.type.default" value="NONE" />
+			<property name="toplink.cache-usage" value="CheckCacheThenDatabase" />
+			<property name="toplink.refresh" value="true" />
+
+			<property name="toplink.ddl-generation" value="none" />
+			<property name="toplink.logging.level" value="INFO" />
+			<property name="toplink.session.customizer"
+				value="com.kewill.dev.dbi.util.OracleSessionCustomizer" />
+			<property name="toplink.weaving" value="false" />
+
 		</properties>
 
 	</persistence-unit>

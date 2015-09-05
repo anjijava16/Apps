@@ -1,4 +1,4 @@
-package com.practice.drools.util;
+package dev.practice.util;
 
 import org.drools.spi.KnowledgeHelper;
 
