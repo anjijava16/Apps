@@ -93,7 +93,7 @@ public final class SystemUtil {
   }
 
   public static String getLogFilePath() {
-    return getSystemProperty(LOG_FILE_PATH, "/kcustoms/logs/");
+    return getSystemProperty(LOG_FILE_PATH, "/kdev/logs/");
   }
 
   public static String getSystemRootDir() {
@@ -141,7 +141,7 @@ public final class SystemUtil {
   }
 
   public static String getLogFilename() {
-    return getSystemProperty(LOG_FILENAME_KEY, "customs.log");
+    return getSystemProperty(LOG_FILENAME_KEY, "dev.log");
   }
 
   public static boolean is3Tier() {
@@ -307,7 +307,7 @@ public final class SystemUtil {
 
   //  //EMAIL 
   //  public static String getEmailFromAddress(){
-  //    return getSystemProperty(EMAIL_FROM_ADDRESS, "KewillCustoms@kewill.com");
+  //    return getSystemProperty(EMAIL_FROM_ADDRESS, "Kewilldev@kewill.com");
   //  }
   //  
   //  public static String getEmailFooter(){
@@ -315,7 +315,7 @@ public final class SystemUtil {
   //  }
   //  
   //  public static String getEmailSender(){
-  //    return getSystemProperty(EMAIL_SENDER, "KewillCustoms@kewill.com");
+  //    return getSystemProperty(EMAIL_SENDER, "Kewilldev@kewill.com");
   //  }
   //  
   //  public static String getEmailBounceAddress(){

@@ -4,7 +4,7 @@
 	<groupId>com.practice.drools</groupId>
 	<artifactId>DroolsValidations</artifactId>
 	<packaging>jar</packaging>
-	<version>1.0-SNAPSHOT</version>
+	<version>1</version>
 	<name>DroolsValidations</name>
 	<url>http://maven.apache.org</url>
 	<dependencies>
