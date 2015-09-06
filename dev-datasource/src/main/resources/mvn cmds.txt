@@ -1,0 +1,4 @@
+mvn archetype:generate -DgroupId=dev.practice.util -DartifactId=dev-datasource -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false
+
+mvn install:install-file -Dfile=G:\toplink-essentials.jar -DgroupId=com.custom.jars -DartifactId=toplink-essentials -Dversion=1 -Dpackaging=jar
+mvn install:install-file -Dfile=G:\jndi.jar -DgroupId=com.custom.jars -DartifactId=jndi -Dversion=1 -Dpackaging=jar
